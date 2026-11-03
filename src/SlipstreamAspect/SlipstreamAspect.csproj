@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>SlipstreamAspect</AssemblyName>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+  </PropertyGroup>
+
+  <!-- The trimmed game references System.Private.CoreLib, so the helper compiles against
+       the runtime itself rather than the reference pack. -->
+  <ItemGroup>
+    <Reference Include="$(RuntimeDir)/System.Private.CoreLib.dll" Private="false" />
+    <Reference Include="$(RuntimeDir)/System.Runtime.dll" Private="false" />
+  </ItemGroup>
+
+  <!-- The game's own assemblies, compiled against and never copied. -->
+  <ItemGroup>
+    <Reference Include="slipstream">
+      <HintPath>$(GameDir)/slipstream.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="FNA">
+      <HintPath>$(GameDir)/FNA.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+</Project>
